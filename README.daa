@@ -12,3 +12,6 @@ also netcdf-cxx4-4.3.0
 -m32 is key
 
 also mv ./bin to ./bin/rexout  (make bin file into a directory and rename it rexout).
+
+Convert to classic netcdf to avoid HDF5 warnings about different versions of the HDF5 headers. 
+ncks -O --fl_fmt=classic spatial0.nc t.nc
