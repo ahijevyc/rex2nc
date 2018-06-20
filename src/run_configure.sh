@@ -6,9 +6,9 @@
 
 # Make sure this is for the x86 (not x86_64) version of NetCdf
 # Assumes nc-config is in the path.
-#NC_CONFIG = "nc-config"
+NC_CONFIG="/sysdisk1/ahijevyc/netcdf-4.6.1/nc-config"
 # Assumes nc-config is not in the path.
-NC_CONFIG="/usr/local/netcdf/x86-gcc/netcdf-current/bin/nc-config"
+#NC_CONFIG="/usr/local/netcdf/x86-gcc/netcdf-current/bin/nc-config"
 
 # Get the commands that were used to compile netcdf
 CC=`${NC_CONFIG} --cc`
@@ -18,7 +18,7 @@ CFLAGS=`${NC_CONFIG} --cflags`
 # No NetCDF Available
 #CFLAGS="${CFLAGS} -m32 -static"
 # Have NetCDF and HDF
-CFLAGS="${CFLAGS} -m32 -static -DHAVE_NETCDF_SUPPORT -DHAVE_HDF_SUPPORT"
+CFLAGS="${CFLAGS} -m32 -Bstatic -DHAVE_NETCDF_SUPPORT -DHAVE_HDF_SUPPORT"
 
 # This should work, but LDFLAGS is not handled properly
 #echo "CC=${CC}"
@@ -28,4 +28,4 @@ CFLAGS="${CFLAGS} -m32 -static -DHAVE_NETCDF_SUPPORT -DHAVE_HDF_SUPPORT"
 
 echo "CC=${CC}"
 echo "CFLAGS=${CFLAGS} ${LDFLAGS}"
-./configure CC="${CC}" CFLAGS="${CFLAGS} ${LDFLAGS}"
+./configure --with-debug --without-strip CC="${CC}" CFLAGS="${CFLAGS} ${LDFLAGS}"
