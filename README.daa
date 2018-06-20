@@ -1,0 +1,14 @@
+module load intel; module load netcdf/4.5.0
+
+
+recompile netcdf-4.6.1 in /sysdisk1/ahijevyc
+./configure --prefix=/sysdisk1/ahijevyc "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32 -L/sysdisk1/ahijevyc/lib" "CPPFLAGS=-I/sysdisk1/ahijevyc/include"
+
+
+also netcdf-c-4.4.1.1
+
+also netcdf-cxx4-4.3.0
+
+-m32 is key
+
+also mv ./bin to ./bin/rexout  (make bin file into a directory and rename it rexout).
