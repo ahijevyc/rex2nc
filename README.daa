@@ -28,4 +28,6 @@ Find -basinName from head'ing the *.rex file.
 This command worked:
 tuna.mmm.ucar.edu:/sysdisk1/ahijevyc/rex2nc>./bin/rexout -out t.nc -bsnDir /sysdisk1/ahijevyc/rex2nc/sloshbsn -basinName eke2 -bnt /sysdisk1/ahijevyc/rex2nc/bnt -rex ~/Downloads/bal112017.dat_249to349.rex  -style 5
 
+Convert to classic netcdf to avoid HDF5 warnings about different versions of the HDF5 headers. 
+ncks -O --fl_fmt=classic spatial0.nc t.nc
 
