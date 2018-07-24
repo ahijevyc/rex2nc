@@ -1,5 +1,6 @@
-module load intel; module load netcdf/4.5.0
+Compiling
 
+module load intel; module load netcdf/4.5.0
 
 recompile netcdf-4.6.1 in /sysdisk1/ahijevyc
 ./configure --prefix=/sysdisk1/ahijevyc "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32 -L/sysdisk1/ahijevyc/lib" "CPPFLAGS=-I/sysdisk1/ahijevyc/include"
@@ -12,3 +13,19 @@ also netcdf-cxx4-4.3.0
 -m32 is key
 
 also mv ./bin to ./bin/rexout  (make bin file into a directory and rename it rexout).
+
+--------------------------------------------
+Running
+
+Only reads rexout version 1.
+   Do a head of *.rex file. Should start with rex1 , not Urex2:
+
+
+Find -basinName from head'ing the *.rex file. 
+   Line 3 starts with eke2, for example. In ~/Downloads/bal112017.dat_249to349.rex
+
+
+This command worked:
+tuna.mmm.ucar.edu:/sysdisk1/ahijevyc/rex2nc>./bin/rexout -out t.nc -bsnDir /sysdisk1/ahijevyc/rex2nc/sloshbsn -basinName eke2 -bnt /sysdisk1/ahijevyc/rex2nc/bnt -rex ~/Downloads/bal112017.dat_249to349.rex  -style 5
+
+
